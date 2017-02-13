@@ -49,9 +49,8 @@ public class CustomerClientTest {
 		customer = client.create(customer);
 	}
 
-
 	@Test
-	public void putTest(){
+	public void putTest() {
 		Customer customer = new Customer();
 
 		customer.setId("112345");
@@ -63,6 +62,15 @@ public class CustomerClientTest {
 		customer = client.update(customer);
 
 		assertNotNull(customer);
+
+	}
+
+	@Test
+	public void deleteTest() {
+
+		CustomerClient client = new CustomerClient();
+
+		client.delete("112345");
 
 	}
 

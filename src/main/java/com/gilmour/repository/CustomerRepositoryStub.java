@@ -68,4 +68,12 @@ public class CustomerRepositoryStub implements CustomerRepository {
 		return customer;
 	}
 
+	@Override
+	public void delete(String customerId) {
+
+		// delete from customer where customerId = ?
+
+
+	}
+
 }

@@ -15,4 +15,6 @@ public interface CustomerRepository {
 	void create(Customer customer);
 
 	Customer update(Customer customer);
+
+	void delete(String customerId);
 }

@@ -63,7 +63,6 @@ public class CustomerClient {
 		return response.readEntity(Customer.class);
 	}
 
-
 	public Customer update(Customer customer) {
 		WebTarget target = client.target("http://localhost:8080/myapp/");
 
@@ -74,5 +73,16 @@ public class CustomerClient {
 		}
 
 		return response.readEntity(Customer.class);
+	}
+
+	public void delete(String customerId) {
+		WebTarget target = client.target("http://localhost:8080/myapp/");
+
+		Response response = target.path("customers/" + customerId).request(MediaType.APPLICATION_JSON_TYPE).delete();
+
+		if (response.getStatus() != 200) {
+			throw new RuntimeException(response.getStatus() + ": there was an error on the server.");
+		}
+
 	}
 }

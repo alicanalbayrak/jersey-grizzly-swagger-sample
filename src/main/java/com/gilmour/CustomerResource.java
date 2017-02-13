@@ -3,6 +3,7 @@ package com.gilmour;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -109,5 +110,20 @@ public class CustomerResource {
 		return Response.ok().entity(customer).build();
 
 	}
+
+	@DELETE
+	@Path("{customerId}")
+	@Consumes("application/json")
+	@Produces({ "application/json", "application/xml" })
+	public Response delete(@PathParam("customerId") String customerId){
+
+		System.out.println(customerId);
+
+		customerRepository.delete(customerId);
+
+		return Response.ok().build();
+
+	}
+
 
 }
