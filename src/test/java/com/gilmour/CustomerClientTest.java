@@ -49,4 +49,21 @@ public class CustomerClientTest {
 		customer = client.create(customer);
 	}
 
+
+	@Test
+	public void putTest(){
+		Customer customer = new Customer();
+
+		customer.setId("112345");
+		customer.setEmail("put@putMail.com");
+		customer.setPassword("9876");
+
+		CustomerClient client = new CustomerClient();
+
+		customer = client.update(customer);
+
+		assertNotNull(customer);
+
+	}
+
 }

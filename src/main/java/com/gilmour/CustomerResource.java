@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -93,6 +94,20 @@ public class CustomerResource {
 	public CustomerHelperObject getCustomerObject(@PathParam("customerId") String customerId) {
 		Customer customer = customerRepository.findCustomerObject(customerId);
 		return customer.getCustomerHelperObject();
+	}
+
+	@PUT
+	@Path("{customer}")
+	@Consumes("application/json")
+	@Produces({ "application/json", "application/xml" })
+	public Response update(Customer customer) {
+
+		System.out.println(customer.getId());
+
+		customer = customerRepository.update(customer);
+
+		return Response.ok().entity(customer).build();
+
 	}
 
 }

@@ -62,4 +62,17 @@ public class CustomerClient {
 
 		return response.readEntity(Customer.class);
 	}
+
+
+	public Customer update(Customer customer) {
+		WebTarget target = client.target("http://localhost:8080/myapp/");
+
+		Response response = target.path("customers/" + customer.getId()).request(MediaType.APPLICATION_JSON_TYPE).put(Entity.entity(customer, MediaType.APPLICATION_JSON_TYPE));
+
+		if (response.getStatus() != 200) {
+			throw new RuntimeException(response.getStatus() + ": there was an error on the server.");
+		}
+
+		return response.readEntity(Customer.class);
+	}
 }

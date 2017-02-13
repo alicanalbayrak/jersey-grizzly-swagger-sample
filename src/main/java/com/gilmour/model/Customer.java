@@ -17,9 +17,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Customer {
 
+	private String id;
 	private String email;
 	private String password;
 	private CustomerHelperObject customerHelperObject;
+
 
 	@XmlElement(name = "user-mail")
 	public String getEmail() {
@@ -44,5 +46,13 @@ public class Customer {
 
 	public void setCustomerHelperObject(CustomerHelperObject customerHelperObject) {
 		this.customerHelperObject = customerHelperObject;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 }

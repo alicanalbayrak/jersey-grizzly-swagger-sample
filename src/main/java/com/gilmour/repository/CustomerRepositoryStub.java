@@ -56,4 +56,16 @@ public class CustomerRepositoryStub implements CustomerRepository {
 		// should insert statement to DB
 	}
 
+	@Override
+	public Customer update(Customer customer) {
+		// search the database to see if we have an customer with that id already
+		// select * from Customer where id = ?
+		// if rs size == 0
+		// insert into Customer table
+		// else
+		// update the customer
+
+		return customer;
+	}
+
 }

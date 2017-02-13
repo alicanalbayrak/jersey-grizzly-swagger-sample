@@ -13,4 +13,6 @@ public interface CustomerRepository {
 	Customer findCustomerObject(String customerId);
 
 	void create(Customer customer);
+
+	Customer update(Customer customer);
 }
