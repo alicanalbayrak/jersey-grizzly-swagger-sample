@@ -18,7 +18,9 @@ import com.gilmour.model.Customer;
 import com.gilmour.model.CustomerHelperObject;
 import com.gilmour.repository.CustomerRepository;
 import com.gilmour.repository.CustomerRepositoryStub;
+import io.swagger.annotations.Api;
 
+@Api(value = "/customers", description = "Simple CRUD functions on Customer table")
 @Path("customers")
 public class CustomerResource {
 
