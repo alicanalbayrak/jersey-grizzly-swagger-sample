@@ -1,8 +1,10 @@
 package com.gilmour;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.gilmour.client.CustomerClient;
+import com.gilmour.client.CustomerSearchClient;
 import com.gilmour.model.Customer;
 import org.junit.Test;
 import static org.junit.Assert.assertNotNull;
@@ -71,6 +73,24 @@ public class CustomerClientTest {
 		CustomerClient client = new CustomerClient();
 
 		client.delete("112345");
+
+	}
+
+	@Test
+	public void searchTest() {
+
+		CustomerSearchClient client = new CustomerSearchClient();
+
+		String param = "description";
+		List<String> searchValues = new ArrayList<>();
+		searchValues.add("something");
+		searchValues.add("something else");
+
+		List<Customer> customers = client.search(param, searchValues);
+
+		System.out.println(customers);
+
+		assertNotNull(customers);
 
 	}
 

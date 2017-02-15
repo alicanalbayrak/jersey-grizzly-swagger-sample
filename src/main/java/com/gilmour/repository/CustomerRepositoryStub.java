@@ -73,7 +73,22 @@ public class CustomerRepositoryStub implements CustomerRepository {
 
 		// delete from customer where customerId = ?
 
+	}
 
+	@Override
+	public List<Customer> findByDescription(List<String> descriptions) {
+		// select * from customers where description in (?,?,?)
+
+		List<Customer> customers = new ArrayList<>();
+
+		Customer customer = new Customer();
+		customer.setId("1357");
+		customer.setEmail("abc@def.com");
+		customer.setPassword("1515");
+
+		customers.add(customer);
+
+		return customers;
 	}
 
 }
