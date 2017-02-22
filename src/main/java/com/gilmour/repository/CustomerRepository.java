@@ -3,6 +3,7 @@ package com.gilmour.repository;
 import java.util.List;
 
 import com.gilmour.model.Customer;
+import com.gilmour.model.CustomerSearch;
 
 public interface CustomerRepository {
 
@@ -19,4 +20,6 @@ public interface CustomerRepository {
 	void delete(String customerId);
 
 	List<Customer> findByDescription(List<String> descriptions);
+
+	List<Customer> findByConstraint(CustomerSearch search);
 }

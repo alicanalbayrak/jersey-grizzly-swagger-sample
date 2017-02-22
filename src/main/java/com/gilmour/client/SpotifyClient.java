@@ -20,7 +20,7 @@ public class SpotifyClient {
 		this.client = ClientBuilder.newClient();
 	}
 
-	public void deneme(String param, String searchValues){
+	public void deneme(String param, String... searchValues){
 
 		URI uri = UriBuilder.fromUri("https://api.spotify.com/v1/search")
 				.queryParam(param, searchValues)
@@ -38,8 +38,7 @@ public class SpotifyClient {
 	public static void main(String[] args) {
 
 		SpotifyClient client = new SpotifyClient();
-		client.deneme("q", "pink%20floyd");
-
+		client.deneme("q", "pink floyd");
 
 	}
 

@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.gilmour.model.Customer;
 import com.gilmour.model.CustomerHelperObject;
+import com.gilmour.model.CustomerSearch;
 
 public class CustomerRepositoryStub implements CustomerRepository {
 
@@ -89,6 +90,24 @@ public class CustomerRepositoryStub implements CustomerRepository {
 		customers.add(customer);
 
 		return customers;
+	}
+
+	@Override
+	public List<Customer> findByConstraint(CustomerSearch search) {
+
+		System.out.println(search.getAge());
+
+		List<Customer> customers = new ArrayList<>();
+
+		Customer customer = new Customer();
+		customer.setId("1234567");
+		customer.setEmail("a@b.c");
+		customer.setPassword("01901");
+
+		customers.add(customer);
+
+		return customers;
+
 	}
 
 }

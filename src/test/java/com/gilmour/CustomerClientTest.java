@@ -6,6 +6,7 @@ import java.util.List;
 import com.gilmour.client.CustomerClient;
 import com.gilmour.client.CustomerSearchClient;
 import com.gilmour.model.Customer;
+import com.gilmour.model.CustomerSearch;
 import org.junit.Test;
 import static org.junit.Assert.assertNotNull;
 
@@ -92,6 +93,26 @@ public class CustomerClientTest {
 
 		assertNotNull(customers);
 
+	}
+
+	@Test
+	public void testSearchObject() {
+
+		CustomerSearchClient client = new CustomerSearchClient();
+
+		List<String> searchValues = new ArrayList<>();
+		searchValues.add("name");
+		searchValues.add("age");
+
+		CustomerSearch search = new CustomerSearch();
+		search.setDescriptions(searchValues);
+		search.setAge(30);
+
+		List<Customer> customers = client.search(search);
+
+		System.out.println(customers);
+
+		assertNotNull(customers);
 	}
 
 }

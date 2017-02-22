@@ -3,6 +3,7 @@ package com.gilmour;
 import java.util.List;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -10,6 +11,7 @@ import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.Response;
 
 import com.gilmour.model.Customer;
+import com.gilmour.model.CustomerSearch;
 import com.gilmour.repository.CustomerRepository;
 import com.gilmour.repository.CustomerRepositoryStub;
 
@@ -35,6 +37,24 @@ public class CustomerSearchResource {
 
 		return Response.ok().entity(new GenericEntity<List<Customer>>(customers) {
 		}).build();
+	}
+
+	@POST
+	@Produces({ "application/json", "application/xml" })
+	public Response searchForCustomers(CustomerSearch search) {
+
+		System.out.println(search.getDescriptions() + ", " + search.getAge());
+
+		List<Customer> customers = customerRepository.findByConstraint(search);
+
+		if (customers == null || customers.isEmpty()) {
+			return Response.status(Response.Status.NOT_FOUND).build();
+		}
+
+		return Response
+				.ok()
+				.entity(new GenericEntity<List<Customer>>(customers) {})
+				.build();
 	}
 
 }
