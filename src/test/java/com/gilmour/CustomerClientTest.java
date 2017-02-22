@@ -7,6 +7,7 @@ import com.gilmour.client.CustomerClient;
 import com.gilmour.client.CustomerSearchClient;
 import com.gilmour.model.Customer;
 import com.gilmour.model.CustomerSearch;
+import com.gilmour.model.CustomerSearchType;
 import org.junit.Test;
 import static org.junit.Assert.assertNotNull;
 
@@ -92,7 +93,6 @@ public class CustomerClientTest {
 		System.out.println(customers);
 
 		assertNotNull(customers);
-
 	}
 
 	@Test
@@ -104,9 +104,11 @@ public class CustomerClientTest {
 		searchValues.add("name");
 		searchValues.add("age");
 
+
 		CustomerSearch search = new CustomerSearch();
 		search.setDescriptions(searchValues);
 		search.setAge(30);
+		search.setCustomerSearchType(CustomerSearchType.SEARCH_BY_NAME);
 
 		List<Customer> customers = client.search(search);
 

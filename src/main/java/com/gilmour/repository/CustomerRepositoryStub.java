@@ -96,6 +96,7 @@ public class CustomerRepositoryStub implements CustomerRepository {
 	public List<Customer> findByConstraint(CustomerSearch search) {
 
 		System.out.println(search.getAge());
+		System.out.println(search.getCustomerSearchType());
 
 		List<Customer> customers = new ArrayList<>();
 
